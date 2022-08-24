@@ -1,0 +1,455 @@
+/*-------------------------------------
+全体
+-------------------------------------*/
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Noto Sans JP";
+}
+
+h1,
+h3 {
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    text-decoration: none;
+}
+
+ul,
+dl {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+li,
+dd {
+    padding: 0;
+    margin: 0;
+}
+
+p {
+    padding: 0;
+    margin: 0;
+}
+
+img {
+    width: 100%;
+}
+
+h2 {
+    padding: 0;
+    margin: 0;
+}
+
+.continer {
+    padding: 0 45px;
+}
+
+/*-------------------------------------------
+ヘッダー
+-------------------------------------------*/
+/*
+「position: fixed;」でヘッダーを固定し、「z-index: 10;」で前面に表示
+※他のコンテンツでpositionをrelative、absolute、fixedのいずれかに
+設定している場合は、z-indexの数値が大きい方が前面に表示される
+*/
+#header {
+    height: 60px;
+    background-color: #fff;
+    display: flex;
+    padding-bottom: 8px;
+    align-items: center;
+    justify-content: space-between;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 10
+}
+
+header h1 img {
+    width: 170px;
+    margin-top: 20px;
+}
+
+/*
+ハンバーガーメニュー
+メニューが閉じている時は、「left: -300px;」で画面左に隠し、
+「opacity: 0;」で非表示にしている
+*/
+#navi {
+    position: fixed;
+    top: 0;
+    left: -300px;
+    width: 300px;
+    height: 100%;
+    background: #121212;
+    color: #fff;
+    padding-top: 60px;
+    padding-left: 30px;
+    transition: all 0.5s;
+    z-index: 20;
+    opacity: 0;
+}
+
+#navi a {
+    color: #fff;
+    font-size: 15px;
+}
+
+#navi .link {
+    width: 250px;
+    padding-top: 20px;
+    margin-bottom: 14px;
+    border-top: 1px solid #fff;
+}
+
+#navi .link-under {
+    width: 250px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    margin-bottom: 14px;
+    border-top: 1px solid #fff;
+    border-bottom: 1px solid #fff;
+}
+
+#navi .sns {
+    margin-top: 60px;
+}
+
+#navi .facebook {
+    margin: 14px 0 14px 0;
+}
+
+/*
+ハンバーガーメニュー
+メニューが開いている時は、「left: 0;」「opacity: 1;」で
+画面左に表示する
+*/
+
+.open #navi {
+    left: 0;
+    opacity: 1;
+}
+
+.toggle_btn {
+    width: 30px;
+    height: 30px;
+    margin-top: 20px;
+    position: relative;
+    transition: all 0.5s;
+    cursor: pointer;
+    z-index: 20;
+}
+
+/*
+ハンバーガーメニューの線の設定（メニューが閉じている時）
+*/
+
+.toggle_btn span {
+    display: block;
+    position: absolute;
+    width: 30px;
+    height: 2px;
+    background-color: #333;
+    border-radius: 4px;
+    transition: all 0.5s;
+}
+
+/*
+1本目の線の位置を設定
+*/
+
+.toggle_btn span:nth-child(1) {
+    top: 10px;
+}
+
+/*
+2本目の線の位置を設定
+*/
+
+.toggle_btn span:nth-child(2) {
+    bottom: 10px;
+}
+
+.toggle_btn span:nth-child(3) {
+    bottom: 25px;
+}
+
+/*
+ハンバーガーメニューの線の設定（メニューが開いている時）
+線の色を白に変更
+*/
+
+.open .toggle_btn span {
+    background-color: #fff;
+}
+/*
+1本目の線を-45度回転
+*/
+
+.open .toggle_btn span:nth-child(3) {
+    -webkit-transform: translateY(7px) rotate(-405deg);
+    transform: translateY(7px) rotate(-405deg);
+}
+
+/*
+2本目の線を45度回転
+*/
+
+.open .toggle_btn span:nth-child(2) {
+    -webkit-transform: translateY(-8px) rotate(405deg);
+    transform: translateY(-8px) rotate(405deg);
+}
+
+.open .toggle_btn span:nth-child(1) {
+    display: none;
+}
+
+#mask {
+    display: none;
+    transition: all 0.5s;
+}
+
+/*
+メニューを開いている時は、全体を黒背景にする
+*/
+
+.open #mask {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #000;
+    opacity: .8;
+    z-index: 10;
+    cursor: pointer;
+}
+
+/*-------------------------------------------
+main
+-------------------------------------------*/
+#main {
+    padding-top: 60px;
+}
+
+#main .title {
+    text-align: center;
+    margin-top: 120px;
+    margin-bottom: 45px;
+    font-size: 40px;
+}
+
+/*-------------------------------------------
+PICK UP
+-------------------------------------------*/
+#pickup {
+    width: 100%;
+}
+/*----------------------
+video
+----------------------*/
+#main video {
+    width: 100%;
+}
+
+/*----------------------
+Carousel
+----------------------*/
+.carousel { 
+    margin: 0 auto;
+    justify-content: center;
+}
+.carousel li {
+    padding: 0 20px 0 20px;
+}
+.carousel img { 
+    width: 100%; 
+    height: auto;
+
+}
+.carousel .slick-next { 
+    right: 20px; 
+    z-index: 99;
+}
+.carousel .slick-prev { 
+    left: 15px; 
+    z-index: 100;
+}
+.carousel .slick-list {
+    overflow: hidden;
+}
+.carousel .slick-prev.slick-arrow::before {
+    display: none;
+}
+.carousel .slick-next.slick-arrow::before {
+    display: none;
+}
+.carousel {
+    font-size: 0;
+}
+
+/*-------------------------------------------
+FEATURE
+-------------------------------------------*/
+.wrapper {
+    padding: 0 17px 0 17px;
+}
+.grid {
+    display: grid;
+    gap: 26px;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    margin-top: 6%;
+}
+.grid .item {
+    box-shadow: 0px 0px 8px 4px #ccc;
+}
+.grid .item img {
+    max-width: 100%;
+}
+.grid .item .img-text {
+    padding: 30px;
+}
+.grid .item .category {
+    font-size: 13px;
+    margin-bottom: 15px;
+}
+.grid .item .text {
+    font-weight: bold;
+    font-size: 15px;
+}
+.grid .item .day {
+    font-size: 13px;
+    text-align: right;
+    margin-top: 15px;
+}
+
+/*-------------------------------------------
+CONTACT
+-------------------------------------------*/
+#contact {
+    background: #121212;
+    padding-bottom: 70px;
+}
+#contact .title {
+    color: #fff;
+    padding-top: 50px;
+}
+#contact .contact-position {
+    display: flex;
+    justify-content: space-between;
+}
+/*----------------------
+contact-text
+----------------------*/
+#contact .contact-text {
+    width: 45%;
+}
+#contact .contact-text p {
+    color: #fff;
+    font-size: 14px;
+}
+#contact .contact-text p + p {
+    margin-top: 35px;
+}
+/*----------------------
+input-form
+----------------------*/
+#contact .input-form {
+    width: 40%;
+}
+#contact .input-form dd{
+    margin-bottom: 25px;
+}
+#contact label {
+    color: #fff;
+}
+#contact dd input {
+    width: 93%;
+    padding: 10px;
+}
+#contact dd textarea {
+    width: 93%;
+    padding: 10px;
+}
+/*----------------------
+buttom
+----------------------*/
+#contact .bt {
+    color: #fff;
+    background: #121212;
+    border: 1px solid #fff;
+    width: 200px;
+    height: 50px;
+    cursor: pointer;
+}
+#contact .bt:hover {
+    background: #fff;
+    color: #121212;
+    border: 1px solid #121212;
+}
+
+/*-------------------------------------------
+footer
+-------------------------------------------*/
+footer {
+    color: #fff;
+    background: #121212;
+    text-align: center;
+    padding-bottom: 10px;
+}
+footer p {
+    font-size: 13px;
+}
+
+/* ------------------------
+animate
+------------------------ */
+.animate {
+    opacity: 0;
+    transition: opacity .3s, transform .3s;
+}
+
+.animate.slide-from-buttom {
+    transform: translateY(40px);
+}
+
+.animate.appear {
+    opacity: 1;
+    transform: none;
+}
+
+/*------------------------------------------------------------
+レスポンシブ対応
+------------------------------------------------------------*/
+@media (min-width: 600px) {
+    /*-------------------------------------------
+    FEATURE
+    -------------------------------------------*/
+    #feature {
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    /*-------------------------------------------
+    FEATURE
+    -------------------------------------------*/
+    #contact .contact-position {
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+    #contact dd input {
+        width: 93%;
+        padding: 10px;
+    }
+    #contact dd textarea {
+        width: 93%;
+        height: 70px;
+        padding: 10px;
+    }
+}
